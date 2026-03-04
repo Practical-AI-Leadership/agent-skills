@@ -64,5 +64,4 @@ Create `docs/README.md` with this structure, replacing placeholders with values 
 |--------|---------|
 | `docs/project_phases/` | Phase overview documents |
 | `docs/concept/` | Concept documents and research |
-| `docs/expert_consultations/` | Consultation requests and responses |
 | `docs/work_packages/` | Work package documents |

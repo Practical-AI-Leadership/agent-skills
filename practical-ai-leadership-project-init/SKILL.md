@@ -54,7 +54,6 @@ Create core folders:
 ```bash
 mkdir -p {PROJECT_ROOT}/docs/project_phases
 mkdir -p {PROJECT_ROOT}/docs/concept
-mkdir -p {PROJECT_ROOT}/docs/expert_consultations
 mkdir -p {PROJECT_ROOT}/docs/work_packages
 ```
 
