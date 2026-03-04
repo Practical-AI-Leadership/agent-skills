@@ -1,12 +1,11 @@
 ---
 name: practical-ai-leadership-project-init
-description: This skill should be used when the user asks to "initialize a project", "create a new project", "set up project structure", "scaffold a project", "init project", "start a new project in this repo", or wants to create a project with folder structure, documentation, AGENTS.md, and vendor-specific AI agent entry points.
-version: 1.0.0
+description: Initializes new projects with folder structure, documentation, AGENTS.md, and vendor-specific AI agent entry points. Triggers on "initialize a project", "create a new project", "set up project structure", "scaffold a project", "init project", or "start a new project in this repo".
 ---
 
 # Project Initialization
 
-Initialize new projects with folder structure, documentation, AGENTS.md, and vendor-specific AI agent files. Creates a solid foundation for any software project that uses AI coding assistants.
+Initialize new projects with folder structure, documentation, AGENTS.md, and vendor-specific AI agent entry points. Creates a solid foundation for any software project that uses AI coding assistants.
 
 Extract any user-provided arguments as initial project description context. Pre-fill interview questions with relevant information (project name, purpose) when available.
 
@@ -65,7 +64,7 @@ Create `docs/README.md` using the template in `references/folder-templates.md`, 
 
 Create `AGENTS.md` at project root using the template in `references/agents-md-template.md`, populated with Phase 1-2 information.
 
-Create vendor-specific files for each agent selected in Phase 3. Each vendor file references AGENTS.md with the correct relative path. See `references/vendor-files.md` for exact paths and content.
+Create vendor-specific files for each agent selected in Phase 3 that requires one. Some agents read AGENTS.md natively and need no vendor file. See `references/vendor-files.md` for which agents need files, exact paths, and content.
 
 Update `README.md` to link to AGENTS.md:
 

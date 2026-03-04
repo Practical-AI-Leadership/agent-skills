@@ -2,11 +2,19 @@
 
 ## Table of Contents
 
-- [Available Agents](#available-agents)
+- [Agents That Read AGENTS.md Natively](#agents-that-read-agentsmd-natively)
+- [Vendor-Specific Entry Points](#vendor-specific-entry-points)
 - [File Content Pattern](#file-content-pattern)
 - [Traceability Chain](#traceability-chain)
 
-## Available Agents
+## Agents That Read AGENTS.md Natively
+
+These agents read `AGENTS.md` from the project root automatically. No vendor-specific file is needed:
+
+- **Codex** — Reads `AGENTS.md` from the Git root and walks down to the current directory.
+- **Amp** — Reads `AGENTS.md` from the current directory and parent directories up to `$HOME`.
+
+## Vendor-Specific Entry Points
 
 Each vendor file points to AGENTS.md with the correct relative path:
 
@@ -16,14 +24,12 @@ Each vendor file points to AGENTS.md with the correct relative path:
 | Cursor | `.cursor/rules/AGENTS.md` | `See [../../AGENTS.md](../../AGENTS.md).` |
 | GitHub Copilot | `.github/copilot-instructions.md` | `See [../AGENTS.md](../AGENTS.md).` |
 | Windsurf | `.windsurf/rules/AGENTS.md` | `See [../../AGENTS.md](../../AGENTS.md).` |
-| Codex | `.codex/AGENTS.md` | `See [../AGENTS.md](../AGENTS.md).` |
-| Gemini CLI | `.gemini/AGENTS.md` | `See [../AGENTS.md](../AGENTS.md).` |
-| Amp | `.amp/AGENTS.md` | `See [../AGENTS.md](../AGENTS.md).` |
+| Gemini CLI | `GEMINI.md` | `See [AGENTS.md](AGENTS.md).` |
 | RooCode | `.roo/rules/AGENTS.md` | `See [../../AGENTS.md](../../AGENTS.md).` |
 | Continue | `.continue/rules/AGENTS.md` | `See [../../AGENTS.md](../../AGENTS.md).` |
 | Amazon Q | `.amazonq/rules/AGENTS.md` | `See [../../AGENTS.md](../../AGENTS.md).` |
 | Tabnine | `.tabnine/guidelines/AGENTS.md` | `See [../../AGENTS.md](../../AGENTS.md).` |
-| Augment Code | `.augment/AGENTS.md` | `See [../AGENTS.md](../AGENTS.md).` |
+| Augment Code | `.augment/rules/AGENTS.md` | `See [../../AGENTS.md](../../AGENTS.md).` |
 
 ## File Content Pattern
 
@@ -34,8 +40,8 @@ See [AGENTS.md]({relative-path-to-agents-md}).
 ```
 
 The relative path depends on the vendor file's depth relative to the project root:
-- Depth 1 (e.g., `CLAUDE.md`): `AGENTS.md`
-- Depth 2 (e.g., `.codex/AGENTS.md`): `../AGENTS.md`
+- Depth 1 (e.g., `CLAUDE.md`, `GEMINI.md`): `AGENTS.md`
+- Depth 2 (e.g., `.github/copilot-instructions.md`): `../AGENTS.md`
 - Depth 3 (e.g., `.cursor/rules/AGENTS.md`): `../../AGENTS.md`
 
 ## Traceability Chain
