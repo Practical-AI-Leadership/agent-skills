@@ -16,15 +16,11 @@ Your AI coding tools are only as good as the context they operate in. Agent Skil
 
 ## How to Use
 
-Each skill is a self-contained directory with a `SKILL.md` file. Point your AI coding agent at it:
+Each skill is a self-contained directory with a `SKILL.md` file that contains the full skill definition.
 
-**Claude Code:**
-```bash
-# Install a skill directly
-claude mcp add-skill ./practical-ai-leadership-negative-coding-patterns-detection
-```
+**To use a skill:** Copy the `SKILL.md` into your AI coding agent's configuration — as a custom instruction, system prompt snippet, or project rule, depending on your tool.
 
-**Any agent:** Copy the `SKILL.md` content into your agent's context or system prompt.
+Skills are vendor-agnostic and work with any AI coding agent that supports custom instructions.
 
 ## Why This Exists
 
