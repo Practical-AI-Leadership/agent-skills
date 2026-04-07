@@ -7,18 +7,23 @@ copy, modify, and distribute the Software, subject to the following conditions:
 1. ATTRIBUTION: The above copyright notice and this permission notice shall
    be included in all copies or substantial portions of the Software.
 
-2. NO SUBLICENSING: You may not sublicense the Software or grant others
-   rights to the Software beyond what is permitted by this license.
+2. NON-COMMERCIAL: You may not use the Software or any modified version for
+   commercial purposes. Commercial purposes include, but are not limited to:
+   - Selling the Software, in original or modified form
+   - Bundling the Software into paid products, services, or courses
+   - Repackaging the Software as a commercial offering
+   - Sublicensing or relicensing the Software
 
-3. NO SELLING: You may not sell the Software itself, either in original or
-   modified form. However, you may use the Software as part of a commercial
-   product or service.
+3. PERMITTED USE: The following uses are expressly permitted:
+   - Personal use
+   - Internal company use (using the Software within your organization)
+   - Non-commercial sharing and distribution
+   - Modification for your own use
+   - Forking and contributing improvements
+   - Educational use
 
 4. NO RELICENSING: You may not relicense the Software under different terms.
    Any distribution must retain this license.
-
-5. MODIFICATIONS: You may modify the Software for your own use or distribute
-   modified versions, provided you comply with conditions 1-4 above.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
