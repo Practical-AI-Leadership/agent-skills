@@ -24,7 +24,3 @@ Built from accumulated experience running multi-agent teams for complex research
 - [ ] Adjust the model assignment table (Opus/Sonnet/Haiku) based on your cost budget
 - [ ] Add your team's common task → topology mappings to the Quick Reference section
 - [ ] Extend the review gate prompt with domain-specific correctness checks
-
-## Note
-
-This README is a landing page. The full skill (SKILL.md + 4 references files) is in this directory. The `references/*.md` files (team-topologies, communication-patterns, anti-patterns, interview-framework) are referenced by SKILL.md but not yet published here — publish them alongside SKILL.md when ready.

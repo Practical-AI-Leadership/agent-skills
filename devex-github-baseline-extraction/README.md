@@ -24,7 +24,3 @@ Built as a core component of an AI coding tools adoption audit. The original pro
 - [ ] Default extraction period is 180 days — adjust via the `since_date` parameter for shorter/longer windows
 - [ ] Add custom revert/hotfix detection patterns to match your team's commit message conventions
 - [ ] Adjust the parallelism setting in `collect_tier1_metrics.py` based on your GitHub API rate limit budget
-
-## Note
-
-This README is a landing page. The full skill (SKILL.md + scripts + references) is available in this directory. The scripts referenced by SKILL.md (`collect_tier1_metrics.py`, `generate_devex_summary.py`, `parse_tier1_metrics.py`) are not yet published here — publish them alongside SKILL.md when ready.
