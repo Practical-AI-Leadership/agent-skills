@@ -8,13 +8,11 @@ Each skill is a self-contained directory with a `SKILL.md` file. Copy the direct
 
 ## Skills
 
-| Skill | Pain Point | Description | Post |
-|-------|------------|-------------|------|
-| [dev-prompt-to-evaluators](./dev-prompt-to-evaluators/) | ENG-04, ENG-06 | Derive code/rule-based and LLM-as-Judge evaluators from any LLM feature's system prompt | — |
-| [devex-github-baseline-extraction](./devex-github-baseline-extraction/) | ADO-01 | Extract 9 baseline developer experience metrics (M1-M9) from GitHub PR data | — |
-| [meta-agent-team-orchestration](./meta-agent-team-orchestration/) | ENG-08, ENG-13 | Design, spawn, coordinate, and retrospect multi-agent teams matched to the task | — |
-
-<!-- New skills added via the Skills Showcase content track. Post column fills in after the LinkedIn post is published. -->
+| Skill | Description | Post |
+|-------|-------------|------|
+| [dev-prompt-to-evaluators](./dev-prompt-to-evaluators/) | Derive code/rule-based and LLM-as-Judge evaluators from any LLM feature's system prompt | — |
+| [devex-github-baseline-extraction](./devex-github-baseline-extraction/) | Extract 9 baseline developer experience metrics (M1-M9) from GitHub PR data | — |
+| [meta-agent-team-orchestration](./meta-agent-team-orchestration/) | Design, spawn, coordinate, and retrospect multi-agent teams matched to the task | — |
 
 ## Why This Exists
 

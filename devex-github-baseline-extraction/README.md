@@ -4,9 +4,7 @@ Extract 9 baseline developer experience metrics (M1-M9) from a GitHub repository
 
 **License:** [See LICENSE.md](../LICENSE.md) — free to use, modify, and share. Commercial repurposing prohibited.
 
-## Pain Point
-
-**ADO-01: Invisible administrative overhead and undocumented engineering friction**
+## Problem
 
 Teams argue about slow delivery without measurements. This skill converts anecdotal frustration into 9 specific numbers a CTO can take to their next leadership meeting.
 

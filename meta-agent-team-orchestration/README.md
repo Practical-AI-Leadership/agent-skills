@@ -4,9 +4,7 @@ Design, spawn, coordinate, and retrospect multi-agent teams matched to a task. H
 
 **License:** [See LICENSE.md](../LICENSE.md) — free to use, modify, and share. Commercial repurposing prohibited.
 
-## Pain Point
-
-**ENG-08 / ENG-13: Coordination failures in multi-agent and cross-functional work**
+## Problem
 
 Agent teams are often spawned with every agent at once, causing idle time on agents waiting for upstream output. The coordination overhead grows quadratically (N agents create N*(N-1)/2 communication paths), and teams frequently exceed the size where parallelism stops paying for itself. This skill enforces lazy spawning, smallest-team-first sizing, and post-mortem retrospectives.
 

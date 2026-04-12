@@ -4,9 +4,7 @@ Systematically derive code/rule-based and LLM-as-Judge evaluators from any LLM f
 
 **License:** [See LICENSE.md](../LICENSE.md) — free to use, modify, and share. Commercial repurposing prohibited.
 
-## Pain Point
-
-**ENG-04 / ENG-06: AI feature quality measurement**
+## Problem
 
 Teams ship AI features without evaluators and keep rediscovering the same code-checkable vs. semantic distinction for every new feature. This skill codifies the analysis pattern so any engineer can produce a complete evaluator set from a prompt in one session.
 
