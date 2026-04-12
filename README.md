@@ -1,6 +1,6 @@
 # Agent Skills
 
-Claude Code Skills built by [Viktor Malyi](https://linkedin.com/in/viktorma) for real-world AI leadership challenges.
+Claude Code Skills built by [Viktor Malyi](https://www.linkedin.com/in/viktormalyi/) for real-world AI leadership challenges.
 
 Each skill is a self-contained directory with a `SKILL.md` file. Copy the directory to `~/.claude/skills/` to use it with Claude Code.
 
