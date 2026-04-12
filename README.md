@@ -1,8 +1,10 @@
 # Agent Skills
 
-Claude Code Skills built by [Viktor Malyi](https://www.linkedin.com/in/viktormalyi/) for real-world AI leadership challenges.
+Agent Skills built by [Viktor Malyi](https://www.linkedin.com/in/viktormalyi/) solving focused problems in teams leveraging AI.
 
-Each skill is a self-contained directory with a `SKILL.md` file. Copy the directory to `~/.claude/skills/` to use it with Claude Code.
+Each skill is a self-contained directory with a `SKILL.md` file. Copy the directory to `~/.claude/skills/` (if use Claude) or `~/.agents/skills/` and restart your AI assistant for changes to apply. 
+
+Alternatively, just point your AI assistant to this page and it will do everything for you.
 
 **License:** Free to use, modify, and share. Commercial repurposing prohibited. See [LICENSE.md](LICENSE.md).
 
