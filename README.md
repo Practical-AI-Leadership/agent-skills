@@ -1,10 +1,10 @@
 # Agent Skills
 
-Agent Skills built by [Viktor Malyi](https://www.linkedin.com/in/viktormalyi/) solving focused problems in teams leveraging AI.
+Agent Skills built by [Viktor Malyi](https://www.linkedin.com/in/viktormalyi/).
 
-Each skill is a self-contained directory with a `SKILL.md` file. Copy the directory to `~/.claude/skills/` (if use Claude) or `~/.agents/skills/` and restart your AI assistant for changes to apply. 
+**AI built-in. Same team, more output.** I build AI into how a team already works, so the people you already have get more done. These skills are a small, open piece of that.
 
-Alternatively, just point your AI assistant to this page and it will do everything for you.
+Each skill is a self-contained directory with a `SKILL.md` file. Copy the directory into `~/.claude/skills/` (or `~/.agents/skills/`) and restart your AI assistant. Or just point your assistant at this page and it will set it up for you.
 
 **License:** Free to use, modify, and share. Commercial repurposing prohibited. See [LICENSE.md](LICENSE.md).
 
@@ -12,14 +12,8 @@ Alternatively, just point your AI assistant to this page and it will do everythi
 
 _No skills published yet._
 
-## Why This Exists
+## Want this for your team?
 
-Most teams already use AI coding tools. Few get real ROI from them. The gap isn't the tools — it's missing context, unchecked anti-patterns, and no feedback loops.
+If you want AI built into how your team already works and not just one more tool to bolt on top of your processes, that's what I do as **Built-In AI for SMEs**.
 
-These skills are extracted from real-world AI leadership work. They address the patterns I see repeatedly when helping teams navigate AI adoption.
-
-## Want the Full Picture?
-
-If your team is navigating AI adoption — strategy gaps, review bottlenecks, tooling confusion — I work as a **Fractional Head of AI** helping companies build the leadership layer they're missing.
-
-**[Learn more at practical-ai-leadership.com](https://practical-ai-leadership.com)**
+**[Book a discovery call →](https://practical-ai-leadership.com)**
