@@ -10,11 +10,7 @@ Alternatively, just point your AI assistant to this page and it will do everythi
 
 ## Skills
 
-| Skill | Description |
-|-------|-------------|
-| [dev-prompt-to-evaluators](./dev-prompt-to-evaluators/) | Derive code/rule-based and LLM-as-Judge evaluators from any LLM feature's system prompt |
-| [devex-github-baseline-extraction](./devex-github-baseline-extraction/) | Extract 9 baseline developer experience metrics (M1-M9) from GitHub PR data |
-| [meta-agent-team-orchestration](./meta-agent-team-orchestration/) | Design, spawn, coordinate, and retrospect multi-agent teams matched to the task |
+_No skills published yet._
 
 ## Why This Exists
 
