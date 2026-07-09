@@ -6,13 +6,13 @@ Agent Skills built by [Viktor Malyi](https://www.linkedin.com/in/viktormalyi/).
 
 Each skill is a self-contained directory with a `SKILL.md` file. Copy the directory into `~/.claude/skills/` (or `~/.agents/skills/`) and restart your AI assistant. Or just point your assistant at this page and it will set it up for you.
 
-**License:** Free to use, modify, and share. Commercial repurposing prohibited. See [LICENSE.md](LICENSE.md).
+**License:** Free to use, modify, and share, *unless a skill states otherwise*. Some skills carry their own stricter license — always check the skill's own `LICENSE.md` before copying or modifying it. Commercial repurposing prohibited. See [LICENSE.md](LICENSE.md).
 
 ## Skills
 
 | Skill | Description |
 |-------|-------------|
-| [company-brain-check](./company-brain-check/) | Grade the structural completeness of a company or personal knowledge base across six dimensions, or recommend a starter structure if none exists yet |
+| [company-brain-check](./company-brain-check/) | Grade the structural completeness of a company or personal knowledge base across six dimensions, or recommend a starter structure if none exists yet. **Evaluation use only — do not modify or redistribute; see its [LICENSE.md](./company-brain-check/LICENSE.md).** |
 
 ## Want this for your team?
 
