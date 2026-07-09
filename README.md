@@ -10,7 +10,9 @@ Each skill is a self-contained directory with a `SKILL.md` file. Copy the direct
 
 ## Skills
 
-_No skills published yet._
+| Skill | Description |
+|-------|-------------|
+| [company-brain-check](./company-brain-check/) | Grade the structural completeness of a company or personal knowledge base across six dimensions, or recommend a starter structure if none exists yet |
 
 ## Want this for your team?
 
