@@ -5,17 +5,17 @@ description: >-
   "find out what's worth extracting into skills", "find skill candidates in my
   AI history", "which of my workflows should become skills", "find the
   workflows I never encoded", "scan my AI conversations for repeatable
-  routines", or wants a shortlist of their own recurring routines that are
-  worth turning into reusable AI skills. Scans the conversation history that
-  Claude Code, Claude Cowork, Codex CLI, and Cursor keep on the local machine
-  (with explicit consent before anything installs), builds a private local
-  index, confirms with the user what they actually work on, and produces an
-  evidence-grounded shortlist — proposed skill names with what/why per item.
-  Falls back to a short interview when little or no history exists. It
-  proposes the shortlist only — it does not build the skills. Not for code
-  search (Grep/Glob) or grounding a claim in evidence — candidates are
-  user-confirmed, never auto-clustered.
-version: 1.0.0
+  routines", or wants to learn which of their own recurring routines are worth
+  turning into reusable AI skills. Reads the conversation history that Claude
+  Code, Claude Cowork, Codex CLI, and Cursor keep on the local machine,
+  distills it into two small local text files (nothing installs, nothing
+  leaves the machine), asks the user what they actually do, and answers in
+  the chat with the patterns found in their own requests — named, counted,
+  quoted — plus proposed skill names. Falls back to a plain
+  conversation when little or no history exists. It proposes candidates only —
+  it does not build the skills. Not for code search (Grep/Glob) or grounding
+  a claim in evidence — candidates are user-confirmed, never auto-clustered.
+version: 2.0.0
 ---
 
 <!--
@@ -30,212 +30,189 @@ agent — to change or share it. Unauthorized use voids the evaluation licence.
 Find the workflows someone runs again and again with their AI tools but never
 encoded as reusable skills. The evidence already exists: every request they
 typed into Claude Code, Claude Cowork, Codex, or Cursor is still on their
-machine. This skill scans that history locally, works out with the user what
-they actually work on, and returns a shortlist of routines worth encoding —
-each one grounded in their own past requests, not in generic advice.
+machine. This skill distills that history, talks with the user about what
+they actually do, and answers **in the chat** with the patterns their own
+requests show — the ask that keeps coming back, the block they keep pasting,
+the chain they run by hand, the calendar rhythm they never noticed.
 
-The output is the shortlist. Building the skills on it is a separate piece of
+The output is that answer. Building the skills on it is a separate piece of
 work, deliberately out of scope here.
 
-## What this installs and where the data stays
+## What this reads and writes
 
-Everything runs and stays on the user's machine:
-
-- The scan step installs nothing.
-- The indexing step — only after the user explicitly agrees — sets up a
-  private Python environment in `~/.skill-candidates/` and installs the
-  ChromaDB package into it (a local search database).
-- On the first indexing run, ChromaDB downloads one language model file
-  (an ~80 MB download, about 170 MB unpacked, cached in `~/.cache/chroma`)
-  so it can search by meaning locally.
-- Roughly 600 MB of disk in total, varying with the ChromaDB version
-  current at install time.
-- No accounts, no API keys, no telemetry, no cloud calls — conversation
-  text never leaves the machine.
-- Removing everything later means deleting `~/.skill-candidates` and
-  `~/.cache/chroma`.
+Everything happens on the user's machine. The skill reads the conversation
+files the four tools keep locally and writes exactly two small text files to
+`~/.skill-candidates/` — one holding the user's own requests, one holding
+counts computed from them. A few MB, created in seconds. Nothing installs,
+no accounts, no API keys, nothing is sent anywhere. Deleting
+`~/.skill-candidates` removes everything.
 
 ## Intent
 
 - Know-how firewall > output richness. Every file of this skill and every
-  output it produces may reveal WHAT the flow does (gather → filter → group →
+  answer it produces may reveal WHAT the flow does (gather → filter → group →
   spot patterns) but never HOW its stages decide: no candidate-qualification
   heuristics, grouping taxonomy, pattern-spotting criteria, or chaining
-  strategy at reconstruction fidelity (the noise-filtering plumbing inside
-  the scripts is mechanism, not methodology). When unsure whether an
-  explanation teaches the engine, cut the explanation and keep the result.
-  The same firewall covers identifying detail in the skill's own files:
-  no client names, internal IDs, or pointers to unpublished skills —
-  genericize before including, never after. In generated reports, names
-  from the user's own history are their data on their machine: quotes keep
-  the user's words; candidate titles and why-lines stay name-free unless
-  the user asks otherwise.
-- Value rides on the user's data, not on methodology exposition. "Enough
-  value" = the shortlist tells the user something true and specific about
-  their own work they could not have listed from memory (routine + recurrence
-  evidence + why it's encodable). Why-lines cite the user's observed
-  instances — what happened, how often, where — never a general rule or
-  threshold that made the routine qualify; if a why cannot be written without
-  stating a rule, ship the instance evidence alone. Generic candidates any
-  listicle could contain = failure, regardless of polish.
-- If the user pushes past the shortlist — asks for the proposed skills to be
-  built, or for the encoding how-to — state plainly where this skill's job
-  ends rather than complying or over-explaining as a consolation.
-- Privacy posture > capability and polish. Never trade "nothing leaves the
-  machine" for better embeddings, richer models, or convenience (no API keys,
-  no telemetry, no cloud calls), and never smooth away the pre-install
-  disclosure — that friction is correct behavior, not UX debt.
-- User-confirmed reality > inference confidence. However confident the
-  index-derived picture looks, it stays a hypothesis until the user confirms
-  it; thin or ambiguous history switches honestly to the interview path
-  rather than stretching weak evidence.
-- "Good" = 3–7 evidence-grounded candidates specific to this user's actual
-  history — each with a convention-conform name, a one-line what/why, and
-  recurrence evidence. "Good enough" = fewer or thinner candidates with
-  honest confidence markers, interview-derived items labeled as such; the
-  firewall holds unconditionally.
-- An empty-but-honest result beats a padded shortlist: if the evidence cannot
-  ground even one specific candidate, say so plainly and offer the interview
-  path.
-- Plain language > technical jargon in everything the user sees. Questions,
-  progress notes, and the shortlist pass the one-read test for a non-engineer
-  — say "I scanned your history", never "I queried the semantic index". The
-  install disclosure still names the exact software it installs — consent
-  needs that specificity — but explains it in plain words.
+  strategy at reconstruction fidelity (the plumbing inside the scripts is
+  mechanism, not methodology). When unsure whether an explanation teaches
+  the engine, cut the explanation and keep the result. The same firewall
+  covers identifying detail in the skill's own files: no client names,
+  internal IDs, or pointers to unpublished skills. In answers, names from
+  the user's own history are their data on their machine: quotes keep the
+  user's words; finding titles stay name-free unless the user asks otherwise.
+- Surprise > confirmation, and both ride on the user's data — never on
+  methodology exposition. Lead with what memory cannot hold: the word-for-word
+  block re-pasted for months, the follow-up chain run by hand, the calendar
+  rhythm, the user's own "again" wording aggregated. A finding the user
+  already knows ("you ask about invoices monthly") supports; it never leads.
+  Generic findings any listicle could contain = failure, regardless of polish.
+- Counted by tools, interpreted by judgment. Every number in an answer comes
+  from the computed counts or a reproducible search — never from eyeballing
+  the text. If a count cannot be reproduced, the finding drops.
+- The user's voice is part of the method, not decoration: ask what they do
+  before concluding anything, present the evidence-based picture as a
+  hypothesis, and let their corrections replace it. Never proceed on an
+  unconfirmed guess about someone's own work.
+- Privacy posture > capability and polish. Nothing installs, nothing leaves
+  the machine, and the one-sentence disclosure before writing the two local
+  files is never smoothed away. No cloud calls, no API keys, no telemetry.
+- The chat is the deliverable. No report files, no links to documents the
+  user must open, no process narration — never mention steps, reviews,
+  scripts, digests, or internal checks. The user sees a couple of plain
+  progress lines, real questions, and the findings. All of it passes the
+  one-read test for a non-engineer.
+- "Good" = 3–5 findings specific to this user's history — each named in
+  plain words, carrying one verified number, quoting the user's own words,
+  and ending in a proposed skill name — with at least one finding the user
+  likely did not consciously know. "Good enough" = fewer or thinner findings
+  with honest confidence markers, conversation-derived items labeled as
+  such; the firewall holds unconditionally.
+- An empty-but-honest answer beats a padded one: if the evidence cannot
+  ground even one specific finding, say so plainly and find candidates by
+  conversation instead. If the user pushes past the findings — asks for the
+  skills to be built or for the encoding how-to — state plainly where this
+  skill's job ends.
 
 ## Workflow
 
-Steps run in order: the scan decides the path, consent gates the install, and
-the confirmed picture of the user's work must exist before any routine
-spotting starts.
+The flow, in order: look → ask → distill → confirm → dig → answer. The
+verification pass before answering is silent — the user never hears about it.
 
-### Step 1: Scan — installs nothing
+### 1. Look for history — read-only
 
-Run the read-only scan and show the result in plain language:
+Check what exists using file listing only (no message text, no scripts):
 
-```bash
-python3 <skill_dir>/scripts/scan_history.py
-```
+- Claude Code: `~/.claude/projects/*/*.jsonl`
+- Claude Cowork: `~/Library/Application Support/Claude/local-agent-mode-sessions/`
+- Codex CLI: `~/.codex/sessions/` and `~/.codex/archived_sessions/`
+- Cursor: `~/Library/Application Support/Cursor/User/globalStorage/state.vscdb`
+  (Windows: under `%APPDATA%`; Linux: under `~/.config/Cursor/`)
 
-It reports how much conversation history each of the four tools keeps on
-this machine — counts and date ranges, plus sizes where a tool stores
-standalone files; no message text. If nothing is found, or only a handful
-of conversations exist, skip to Step 7 (interview path) and say why.
+If nothing exists or only a handful of files: skip straight to the
+conversation path (`references/conversation-guide.md`), and say why in one
+plain sentence.
 
-### Step 2: Ask before anything installs
+### 2. Ask, disclose, and distill — one turn
 
-Tell the user, before anything happens, exactly what saying yes means — in
-substance: private environment at `~/.skill-candidates/`, the ChromaDB
-package inside it, a one-time ~80 MB model file download, roughly 600 MB of
-disk in total, everything local, nothing sent anywhere, removable by
-deleting two folders (see "What this installs and where the data stays"
-above). Then ask for an explicit yes. No yes — no install: offer the
-interview path instead. Never soften, shorten away, or skip this
-disclosure.
+In a single message: tell the user in one plain sentence what was found and
+ask the 2–3 genuine questions from
+[references/conversation-guide.md](references/conversation-guide.md) — what
+they do, what a normal week looks like, anything to leave out. Include the
+one-sentence disclosure: reading those conversations and writing two small
+text files to `~/.skill-candidates/`, nothing installs, nothing leaves the
+machine, delete the folder anytime — and wait for their explicit go-ahead
+in the same reply as their answers.
 
-### Step 3: Build the local index
+Once they reply, run the extractor that fits the machine:
 
-```bash
-python3 <skill_dir>/scripts/build_index.py --install
-```
+- macOS with developer tools present (`xcode-select -p` succeeds):
+  `python3 <skill_dir>/scripts/extract_digest.py`
+- macOS without developer tools — never invoke python3, it would trigger an
+  install dialog: `osascript -l JavaScript <skill_dir>/scripts/extract_digest.js`
+- Windows: `powershell -NoProfile -ExecutionPolicy Bypass -File <skill_dir>/scripts/extract_digest.ps1`
+  — this variant cannot read Cursor's storage; if the look found Cursor
+  history, say so in one plain sentence and cover that ground with the
+  conversation questions instead
+- Linux: `python3 <skill_dir>/scripts/extract_digest.py` — and if python3 is
+  missing or older than 3.9, say so in one plain sentence and use the
+  conversation path instead
 
-For very large histories, bound the first run to the recent past (for
-example `--since` six months back) and say so. Report progress in plain
-words. Later runs without `--install` only add new conversations.
+If the extractor fails for any other reason, say so in one plain sentence
+and use the conversation path — never leave the user with a raw error as
+the last word.
 
-### Step 4: Work out what the person works on
+All variants accept `--since YYYY-MM-DD` (PowerShell: `-Since`). If
+`signals.txt` reports `SCALE=LARGE` in its totals, re-run bounded to
+roughly the last six months and tell the user in one plain line that the
+look is focused on recent months because the history is unusually big.
 
-```bash
-python3 <skill_dir>/scripts/query_index.py --overview
-```
+### 3. Form and confirm the picture
 
-From the overview — projects, activity volumes, date spans, example requests
-— form a short picture of what this person appears to work on: their main
-work areas, and which look professional versus personal. Keep it to a handful
-of areas, each tied to what the overview actually shows.
+Read `~/.skill-candidates/signals.txt`. Combine what it shows (where the
+activity is, what repeats, when) with what the user answered, and reflect a
+short picture back: their main work areas, each tied to something concrete
+("most of your activity is around X — roughly N requests since March").
+Present it as a hypothesis and ask what's wrong or missing. Their
+corrections replace the picture — do not argue with someone about their own
+work. Exclusions they name are honored everywhere downstream.
 
-### Step 5: Confirm the picture with the user
+### 4. Dig where the signals point
 
-Present the picture as a hypothesis, with the evidence that suggested it
-("your most active area looks like X — around N requests since March").
-Ask targeted questions: what they do, which areas matter, what's missing from
-the picture, what should be left out (personal areas are theirs to exclude).
-Never proceed on an unconfirmed guess. Corrections replace the hypothesis —
-do not argue with the person about their own work.
+For each confirmed area, work through the evidence:
 
-### Step 6: Spot recurring routines
+- Read the matching sections of `signals.txt` (repeated requests, repeated
+  blocks, "again"-wording, rhythms, chains).
+- Pull supporting lines from `~/.skill-candidates/digest.tsv` — search it
+  with several wordings per candidate, not just one, since people phrase
+  the same ask differently across months.
+- Watch the date spans: dozens of repeats inside a day or two is a batch
+  job or an existing automation, not a human routine — treat it accordingly.
+- Every count that will appear in the answer must come from `signals.txt`
+  or a reproducible search over the digest — never from impression.
 
-For each confirmed work area, search the index for the everyday work that
-appears in it — pair the area with common task verbs (prepare, draft, review,
-summarize, update, check, plan, send) and follow what the matches themselves
-suggest:
+Apply the candidate lens and the finding shapes in
+[references/findings-format.md](references/findings-format.md), and name
+each proposed skill per
+[references/naming-guide.md](references/naming-guide.md).
 
-```bash
-python3 <skill_dir>/scripts/query_index.py "drafting the weekly team update" --top 20
-```
+### 5. Verify silently, then answer in the chat
 
-Read the matching requests. A routine belongs on the shortlist when the
-user's own history shows it coming back — the same kind of request across
-different sessions and dates — and it has a repeatable shape. Drop one-offs,
-drop "everything I do" umbrellas, drop routines seen only once. Apply the
-candidate lens and quality bar in
-[references/shortlist-format.md](references/shortlist-format.md), and name
-each candidate per [references/naming-guide.md](references/naming-guide.md).
+Before answering, run the check in
+[references/review-gate-prompt.md](references/review-gate-prompt.md) — a
+separate agent re-verifies every number and quote against the two local
+files (give it the drafted findings, the two file paths when they exist,
+and the user's statements for conversation-derived items). This check runs
+on conversation-only answers too — there the file checks simply don't
+apply. Fix what it rejects; drop what cannot be verified. None of this is
+mentioned to the user.
 
-### Step 7: Interview path (fallback)
+Then deliver the findings **directly in the chat**, shaped per
+[references/findings-format.md](references/findings-format.md): 3–5
+findings, each with a plain-words name, one number, the user's own words
+quoted, and a proposed skill name — then one closing line on where this
+skill's job ends. The answer's first line is the "Looked at N requests..."
+opener — nothing before it: no lead-in, no note about checks or fixes, no
+"here's what I found". No file is written unless the user explicitly asks
+to save the answer somewhere.
 
-When there is no usable history, the user declines the install, or the index
-turns out too thin to ground candidates: switch to the short interview in
-[references/interview-fallback.md](references/interview-fallback.md) and say
-plainly why. The same reference covers the top-up case — the scan grounded
-only part of the user's work, and the interview fills the rest. Candidates
-from this path are labeled as interview-derived in the report.
-
-### Step 8: Review gate — verify before presenting
-
-Spawn a separate review agent with the prompt in
-[references/review-gate-prompt.md](references/review-gate-prompt.md). The
-spawned agent cannot see this conversation or resolve placeholders, so the
-spawn message must carry everything it needs:
-
-- the prompt with `<skill_dir>` replaced by the skill's absolute path (it
-  also fixes the naming-guide path the prompt refers to)
-- the draft shortlist verbatim
-- for interview-derived candidates: the user's actual statements from this
-  conversation that each one rests on
-- file-reading and command-running access, so it can re-run index searches
-
-It verifies scan-derived candidates against the index and interview-derived
-candidates against the attached statements, then checks names, plain
-language, and name hygiene. Fix findings and re-verify (at most 2 cycles).
-Rejected candidates leave the shortlist; if that empties it, say so
-honestly and offer the interview path to fill the gaps.
-
-### Step 9: Deliver the shortlist
-
-Write the report per the contract in
-[references/shortlist-format.md](references/shortlist-format.md): a file
-saved where the user can open it (their working folder by default — never a
-temp folder), plus a short plain-language chat summary. 3–7 candidates,
-each with a proposed name, what it covers, the recurrence evidence, and why
-it is worth encoding. Close the file with the honest boundary: this skill
-proposes; encoding the routines into working skills is the next, separate
-piece of work.
+When the history was unusually big even after bounding, add the plain
+closing line from `references/conversation-guide.md` — at that volume, a
+proper deep pass is its own piece of work.
 
 ## Additional Resources
 
 ### Reference Files
 
-- **`references/shortlist-format.md`** — the report contract (file + chat
-  summary), the candidate lens, and the quality bar per item
-- **`references/naming-guide.md`** — how to name proposed skills: kebab-case
-  rules, reserved words, prefix families
-- **`references/interview-fallback.md`** — the interview path when history is
-  missing, declined, or too thin
-- **`references/review-gate-prompt.md`** — the review agent's prompt, with
-  separate evidence checks for scan-derived and interview-derived candidates
+- **`references/findings-format.md`** — the candidate lens, the finding
+  shapes with their wow templates, and the chat-answer contract
+- **`references/conversation-guide.md`** — the opening questions, the
+  conversation-only path, and the closing lines (boundary, large-history)
+- **`references/naming-guide.md`** — how to name proposed skills:
+  kebab-case rules, reserved words, prefix families
+- **`references/review-gate-prompt.md`** — the silent verification pass run
+  before answering
 
 ### Example Files
 
-- **`examples/sample-shortlist.md`** — a complete fictional example of the
-  report this skill produces
+- **`examples/sample-findings.md`** — a complete fictional example of the
+  chat answer this skill produces
