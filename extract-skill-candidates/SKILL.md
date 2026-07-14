@@ -2,20 +2,20 @@
 name: extract-skill-candidates
 description: >-
   This skill should be used when the user asks to "extract skill candidates",
-  "find out what's worth extracting into skills", "find skill candidates in my
-  AI history", "which of my workflows should become skills", "find the
-  workflows I never encoded", "scan my AI conversations for repeatable
-  routines", or wants to learn which of their own recurring routines are worth
-  turning into reusable AI skills. Reads the conversation history that Claude
-  Code, Claude Cowork, Codex CLI, and Cursor keep on the local machine,
-  distills it into two small local text files (nothing installs, nothing
-  leaves the machine), asks the user what they actually do, and answers in
-  the chat with the patterns found in their own requests — named, counted,
-  quoted — plus proposed skill names. Falls back to a plain
-  conversation when little or no history exists. It proposes candidates only —
-  it does not build the skills. Not for code search (Grep/Glob) or grounding
-  a claim in evidence — candidates are user-confirmed, never auto-clustered.
-version: 2.0.0
+  "find skill candidates in my AI history", "which of my workflows should
+  become skills", "find the workflows I never encoded" — or, in German,
+  "extrahiere Skill-Kandidaten", "welche meiner Workflows sollten Skills
+  werden", "was es wert ist, in Skills extrahiert zu werden" — or wants to know
+  which of their recurring routines are worth becoming reusable AI skills.
+  Reads the local histories of Claude Code, Claude Cowork, Codex CLI, and
+  Cursor, distills them into two small text files (nothing installs, nothing
+  leaves the machine), asks what the user actually does, and answers in the
+  chat, in the user's language, with the patterns found in their own
+  requests: named, counted, quoted, plus proposed skill names. Falls back to
+  plain conversation when history is thin. It proposes candidates only,
+  never builds them. Not for code search (Grep/Glob) or grounding a claim in
+  evidence — candidates are user-confirmed, never auto-clustered.
+version: 2.1.0
 ---
 
 <!--
@@ -79,8 +79,8 @@ no accounts, no API keys, nothing is sent anywhere. Deleting
 - The chat is the deliverable. No report files, no links to documents the
   user must open, no process narration — never mention steps, reviews,
   scripts, digests, or internal checks. The user sees a couple of plain
-  progress lines, real questions, and the findings. All of it passes the
-  one-read test for a non-engineer.
+  progress lines, real questions, and the findings — all in the user's own
+  language, and all passing the one-read test for a non-engineer.
 - "Good" = 3–5 findings specific to this user's history — each named in
   plain words, carrying one verified number, quoting the user's own words,
   and ending in a proposed skill name — with at least one finding the user

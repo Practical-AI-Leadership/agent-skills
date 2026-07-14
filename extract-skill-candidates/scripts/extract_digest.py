@@ -46,10 +46,14 @@ LARGE_CONVERSATIONS = 1500
 MARKERS = re.compile(
     r"\b(again|as usual|like last time|same as (before|last time|always)|"
     r"as always|once more|the usual|as i (said|mentioned|explained)|"
-    r"every (week|month|time)|per usual)\b", re.I)
+    r"every (week|month|time)|per usual|"
+    r"nochmals?|noch (ein)?mal|schon wieder|wie immer|wie \u00fcblich|"
+    r"wie gehabt|wie (beim )?letzte[sn]? mal|wie besprochen|jedes mal)\b", re.I)
 FRICTION = re.compile(
     r"(no,?\s*i (meant|said)|not what i (asked|meant|wanted)|"
-    r"that'?s (wrong|not right)|still (not|wrong)|try again)", re.I)
+    r"that'?s (wrong|not right)|still (not|wrong)|try again|"
+    r"nein,?\s*ich meinte|das meinte ich nicht|nicht,? was ich (wollte|meinte)|"
+    r"das ist falsch|stimmt so nicht|versuch(e| es)? nochmal)", re.I)
 
 
 # ─── Reading the conversations each tool keeps on disk ───────────────

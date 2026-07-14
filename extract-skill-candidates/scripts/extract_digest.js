@@ -32,8 +32,8 @@ const OUT_DIR = env("SKILL_CANDIDATES_DIR") || (REAL_HOME + "/.skill-candidates"
 const MIN_LEN = 25, MAX_TEXT = 2000;
 const LARGE_REQUESTS = 8000, LARGE_CONVERSATIONS = 1500;
 
-const MARKERS = /\b(again|as usual|like last time|same as (?:before|last time|always)|as always|once more|the usual|as i (?:said|mentioned|explained)|every (?:week|month|time)|per usual)\b/gi;
-const FRICTION = /(no,?\s*i (?:meant|said)|not what i (?:asked|meant|wanted)|that'?s (?:wrong|not right)|still (?:not|wrong)|try again)/i;
+const MARKERS = /\b(again|as usual|like last time|same as (?:before|last time|always)|as always|once more|the usual|as i (?:said|mentioned|explained)|every (?:week|month|time)|per usual|nochmals?|noch (?:ein)?mal|schon wieder|wie immer|wie \u00fcblich|wie gehabt|wie (?:beim )?letzte[sn]? mal|wie besprochen|jedes mal)\b/gi;
+const FRICTION = /(no,?\s*i (?:meant|said)|not what i (?:asked|meant|wanted)|that'?s (?:wrong|not right)|still (?:not|wrong)|try again|nein,?\s*ich meinte|das meinte ich nicht|nicht,? was ich (?:wollte|meinte)|das ist falsch|stimmt so nicht|versuch(?:e| es)? nochmal)/i;
 const INJECTED = ["<system-reminder>", "<local-command-caveat>", "<local-command-stdout>",
     "<command-name>", "<command-message>", "<environment_context>", "<permissions",
     "<approval_policy>", "<sandbox_mode>", "<network_access>", "<turn_aborted>",

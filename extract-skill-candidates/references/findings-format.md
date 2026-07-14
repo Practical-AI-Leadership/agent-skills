@@ -134,6 +134,12 @@ chat to a file where they say, and nothing more.
 
 ## Language rules
 
+- Everything the user sees is written in the user's language — the
+  questions, the progress lines, and the whole answer. The templates here
+  translate; a German user's answer opens, for example, "Ich habe mir 214
+  Anfragen angesehen, die du seit Februar gestellt hast..." and closes with
+  the boundary line in German. Quotes stay in whatever language the user
+  originally wrote them.
 - Plain words a non-engineer reads at conversational speed. Never:
   "digest", "signals", "index", "script", "extractor", "normalized",
   "semantic", "query", "TSV", "verification", "review", "step 1/2/3",

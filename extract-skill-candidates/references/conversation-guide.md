@@ -13,10 +13,10 @@ brief, zero ceremony.
 
 ## The opening questions
 
-Ask 2–3 of these, in one message, adapted to what the file listing already
-suggests (a person with one project folder gets different questions than a
-person with forty). Genuine questions — the answers steer everything
-downstream:
+Ask 2–3 of these, in one message, in the user's language, adapted to what
+the file listing already suggests (a person with one project folder gets
+different questions than a person with forty). Genuine questions — the
+answers steer everything downstream:
 
 1. **What do you do?** "Before I look — what's your work? A sentence or
    two is plenty."
