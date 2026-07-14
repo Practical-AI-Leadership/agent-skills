@@ -48,6 +48,8 @@ For every finding, regardless of source:
       mention of checks or reviews.
 - [ ] No client, company, or person names in finding TITLES (quotes keep
       the user's words — that is allowed and expected).
+- [ ] The "start with" recommendation cites only numbers already verified
+      above it — no new unverified claim.
 
 Anything you cannot verify: UNABLE_TO_VERIFY with the reason — never
 assume it is fine. Report per finding: Finding / Problem / Evidence / Fix.

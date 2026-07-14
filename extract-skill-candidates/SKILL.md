@@ -2,20 +2,20 @@
 name: extract-skill-candidates
 description: >-
   This skill should be used when the user asks to "extract skill candidates",
-  "find skill candidates in my AI history", "which of my workflows should
-  become skills", "find the workflows I never encoded" — or, in German,
-  "extrahiere Skill-Kandidaten", "welche meiner Workflows sollten Skills
-  werden", "was es wert ist, in Skills extrahiert zu werden" — or wants to know
-  which of their recurring routines are worth becoming reusable AI skills.
-  Reads the local histories of Claude Code, Claude Cowork, Codex CLI, and
-  Cursor, distills them into two small text files (nothing installs, nothing
-  leaves the machine), asks what the user actually does, and answers in the
-  chat, in the user's language, with the patterns found in their own
-  requests: named, counted, quoted, plus proposed skill names. Falls back to
-  plain conversation when history is thin. It proposes candidates only,
-  never builds them. Not for code search (Grep/Glob) or grounding a claim in
-  evidence — candidates are user-confirmed, never auto-clustered.
-version: 2.1.0
+  "find out what's worth extracting into skills", "find skill candidates in
+  my AI history", "which of my workflows should become skills", "find the
+  workflows I never encoded", "scan my AI conversations for repeatable
+  routines", or wants to know which of their recurring routines are worth
+  becoming reusable AI skills. Reads the local histories of Claude Code,
+  Claude Cowork, Codex CLI, and Cursor, distills them into two small text
+  files (nothing installs, nothing leaves the machine), asks what the user
+  actually does, and answers in the chat, in the user's language, with the
+  patterns found in their own requests: named, counted, quoted, plus
+  proposed skill names. Falls back to plain conversation when history is
+  thin. It proposes candidates only, never builds them. Not for code search
+  (Grep/Glob) or grounding a claim in evidence — candidates are
+  user-confirmed, never auto-clustered.
+version: 2.2.0
 ---
 
 <!--
@@ -83,10 +83,12 @@ no accounts, no API keys, nothing is sent anywhere. Deleting
   language, and all passing the one-read test for a non-engineer.
 - "Good" = 3–5 findings specific to this user's history — each named in
   plain words, carrying one verified number, quoting the user's own words,
-  and ending in a proposed skill name — with at least one finding the user
-  likely did not consciously know. "Good enough" = fewer or thinner findings
-  with honest confidence markers, conversation-derived items labeled as
-  such; the firewall holds unconditionally.
+  and ending in a proposed skill name with its takes/produces/fires
+  sketch — at least one finding the user likely did not consciously know,
+  and at most one about how they talk to their tools rather than the work
+  itself. "Good enough" = fewer or thinner findings with honest confidence
+  markers, conversation-derived items labeled as such; the firewall holds
+  unconditionally.
 - An empty-but-honest answer beats a padded one: if the evidence cannot
   ground even one specific finding, say so plainly and find candidates by
   conversation instead. If the user pushes past the findings — asks for the
@@ -156,15 +158,19 @@ Present it as a hypothesis and ask what's wrong or missing. Their
 corrections replace the picture — do not argue with someone about their own
 work. Exclusions they name are honored everywhere downstream.
 
-### 4. Dig where the signals point
+### 4. Dig where the signals point — area by area
 
-For each confirmed area, work through the evidence:
+Work through the confirmed areas one by one, not just where literal
+repetition is loudest. For each area:
 
+- Search `~/.skill-candidates/digest.tsv` with several wordings per
+  candidate, not just one — people phrase the same ask differently across
+  months, and the routines that matter most rarely repeat word-for-word.
 - Read the matching sections of `signals.txt` (repeated requests, repeated
-  blocks, "again"-wording, rhythms, chains).
-- Pull supporting lines from `~/.skill-candidates/digest.tsv` — search it
-  with several wordings per candidate, not just one, since people phrase
-  the same ask differently across months.
+  blocks, "again"-wording, rhythms, chains) as leads to chase, not as the
+  candidate list. Work routines from the confirmed areas outrank patterns
+  in how the user talks to their tools — at most one such interaction
+  habit makes the answer, and only when its cost is genuinely large.
 - Watch the date spans: dozens of repeats inside a day or two is a batch
   job or an existing automation, not a human routine — treat it accordingly.
 - Every count that will appear in the answer must come from `signals.txt`
@@ -189,8 +195,9 @@ mentioned to the user.
 Then deliver the findings **directly in the chat**, shaped per
 [references/findings-format.md](references/findings-format.md): 3–5
 findings, each with a plain-words name, one number, the user's own words
-quoted, and a proposed skill name — then one closing line on where this
-skill's job ends. The answer's first line is the "Looked at N requests..."
+quoted, and a proposed skill name with its takes/produces/fires sketch —
+then one sentence naming which candidate to encode first, then one closing
+line on where this skill's job ends. The answer's first line is the "Looked at N requests..."
 opener — nothing before it: no lead-in, no note about checks or fixes, no
 "here's what I found". No file is written unless the user explicitly asks
 to save the answer somewhere.

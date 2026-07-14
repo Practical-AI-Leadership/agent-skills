@@ -44,6 +44,17 @@ And none of these:
 When two candidates overlap, keep the one with stronger evidence and fold
 the other into its description.
 
+Work routines outrank interaction habits. Patterns in how someone talks
+to their tools — review framings, formatting requests, close-out rituals —
+are real, but they are the ceiling tiles, not the room: at most one of
+them makes the answer, and only when its time cost is genuinely large.
+The findings a user can act on live in their work — the deliverables and
+processes of the areas they confirmed. Dig those areas one by one; the
+loudest literal repetitions are leads, not the shortlist. If confirmed-area
+digging plus the one permitted interaction habit still fall short of
+three findings, let the answer run thin — never raise the interaction-habit
+cap to fill the quota; honest-and-short beats padded.
+
 ## The finding shapes
 
 Lead with what the user's memory cannot hold. In descending order of
@@ -88,7 +99,9 @@ Every finding carries all four parts: a plain-words name (not the proposed
 skill name — a human phrase like "the kickoff brief you rebuild every
 time"), one number that a search can reproduce, the user's own words quoted
 (lightly shortened at most, never invented), and a proposed skill name per
-`naming-guide.md` with a half-line of what that skill would cover.
+`naming-guide.md` followed by a one-line sketch of the skill itself —
+what it takes in, what it produces, and the moment it fires — concrete
+enough that the user could hand it to someone and say "build this".
 
 Findings that came from the conversation instead of the history say so in
 five words ("from what you told me") — never dressed up as scanned
@@ -103,14 +116,18 @@ Looked at {N} requests you made across {tools} since {month}. After what
 you told me about your work, {K} patterns stand out:
 
 **1. {plain-words name}** — {the finding, per its template: number +
-verbatim quote}. Worth encoding as `{proposed-skill-name}` — {half-line
-of what it would cover}.
+verbatim quote}. Worth encoding as `{proposed-skill-name}`: takes
+{the input as it exists today}, produces {the thing the user actually
+needs}, fires {the moment it should run}.
 
 **2. ...**
 
 **3. ...**
 
 {Optional single identity line.}
+
+If you encode one, start with {#N — one sentence naming why: the most
+time returned, or the one felt most often}.
 
 That's where this skill's job ends: it finds the patterns. Turning them
 into working skills — writing down how you actually run each one so your
